@@ -19,6 +19,9 @@ class UserListingsViewModel @Inject constructor(
 ) : ViewModel(){
     var state by mutableStateOf(UserState())
     private var searchJob: Job? = null
+    init{
+        getUsers()
+    }
 
     fun onEvent(event: UserEvent){
         when(event){

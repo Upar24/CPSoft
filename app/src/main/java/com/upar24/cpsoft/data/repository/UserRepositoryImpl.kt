@@ -16,8 +16,8 @@ import javax.inject.Singleton
 
 @Singleton
 class UserRepositoryImpl @Inject constructor(
-    val api: UserApi,
-    val db: UserDatabase
+    private val api: UserApi,
+    private val db: UserDatabase
 ): UserRepository {
     private val dao= db.dao
     override suspend fun getUserListings(

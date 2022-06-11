@@ -10,5 +10,5 @@ data class UserEntity(
     val address: String,
     val email: String,
     val phoneNumber: String,
-    @PrimaryKey val id: String? = null
+    @PrimaryKey val id: Int? = null
 )

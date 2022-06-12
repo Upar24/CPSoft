@@ -17,6 +17,10 @@ import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import com.upar24.cpsoft.presentation.destinations.UserInfoScreenDestination
+import com.upar24.cpsoft.presentation.destinations.UsersSortedByNameDestination
+import com.upar24.cpsoft.presentation.destinations.UsersSubListScreenByCityDestination
+import com.upar24.cpsoft.presentation.user_info.UserInfoScreen
 
 
 @Composable
@@ -47,6 +51,16 @@ fun UserListingsScreen(
             maxLines = 1,
             singleLine = true
         )
+        Text(
+            text = "sorted by name",
+            modifier = Modifier.clickable {
+                navigator.navigate(UsersSortedByNameDestination)
+            })
+        Text(
+            text = "sorted by city",
+            modifier = Modifier.clickable {
+                navigator.navigate(UsersSubListScreenByCityDestination("Tangerang"))
+            })
         SwipeRefresh(
             state = swipeRefreshState,
             onRefresh = {
@@ -62,7 +76,9 @@ fun UserListingsScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-                                //TODO
+                                navigator.navigate(
+                                    UserInfoScreenDestination()
+                                )
                             }
                             .padding(16.dp)
                     )

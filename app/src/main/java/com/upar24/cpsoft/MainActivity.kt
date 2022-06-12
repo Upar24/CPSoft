@@ -8,7 +8,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import com.ramcosta.composedestinations.DestinationsNavHost
-import com.upar24.cpsoft.presentation.user_listings.NavGraphs
+import com.upar24.cpsoft.presentation.NavGraphs
 import com.upar24.cpsoft.ui.theme.CPSoftTheme
 import dagger.hilt.android.AndroidEntryPoint
 

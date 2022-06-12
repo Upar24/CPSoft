@@ -56,11 +56,7 @@ fun UserListingsScreen(
             modifier = Modifier.clickable {
                 navigator.navigate(UsersSortedByNameDestination)
             })
-        Text(
-            text = "sorted by city",
-            modifier = Modifier.clickable {
-                navigator.navigate(UsersSubListScreenByCityDestination("Tangerang"))
-            })
+        CitySelection(navigator = navigator, filterList = true)
         SwipeRefresh(
             state = swipeRefreshState,
             onRefresh = {

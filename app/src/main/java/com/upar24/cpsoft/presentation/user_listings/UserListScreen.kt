@@ -18,7 +18,6 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.upar24.cpsoft.presentation.destinations.UserInfoScreenDestination
 import com.upar24.cpsoft.presentation.destinations.UsersSortedByNameDestination
-import com.upar24.cpsoft.presentation.destinations.UsersSubListScreenByCityDestination
 import com.upar24.cpsoft.presentation.user_info.UserInfoScreen
 
 

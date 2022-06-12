@@ -16,15 +16,33 @@ import com.upar24.cpsoft.presentation.destinations.UserInfoScreenDestination
 @Composable
 @Destination
 fun UsersSubListScreenByCity(
+    navigator: DestinationsNavigator,
     city: String,
     viewModel: UserListingsViewModel = hiltViewModel()
 ){
     val list = viewModel.state.users.toMutableList()
-    Column {
-        list.forEach {
-            if(it.city ==city){
-                Text(text = city)
+    Box(
+        Modifier.fillMaxSize().padding(16.dp)
+    ){
+        LazyColumn(
+            modifier = Modifier.fillMaxSize()
+        ){
+            items(list.size){i ->
+                val user = list[i]
+                if(user.city == city){
+                    UserItem(
+                        user = user,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                navigator.navigate(
+                                    UserInfoScreenDestination
+                                )
+                            }
+                    )
+                }
             }
+
         }
     }
 }

@@ -118,3 +118,26 @@ fun DividerItem(){
             .width(1.dp)
     )
 }
+@Composable
+fun TwoTextItem(title:String, desc:String){
+    Column(Modifier.padding(8.dp)) {
+        Text(text= title,style=MaterialTheme.typography.subtitle1)
+        Text(text= desc,style=MaterialTheme.typography.body1)
+
+    }
+}
+@Composable
+fun UserDetailItem(){
+    Column(Modifier.padding(16.dp)) {
+        TwoTextItem(title = "NAMA", desc = "user.name")
+        TwoTextItem(title = "CITY", desc = "user.city")
+        TwoTextItem(title = "ADDRESS", desc = "user.address")
+        TwoTextItem(title = "E-MAIL", desc = "user.email")
+        TwoTextItem(title = "PHONE NUMBER", desc = "user.phoneNumber")
+        Spacer(modifier = Modifier.padding(16.dp))
+        Text(
+            text= "the user's info should look like this but i got some bug at navigation parameter :(",
+            style= MaterialTheme.typography.caption
+        )
+    }
+}

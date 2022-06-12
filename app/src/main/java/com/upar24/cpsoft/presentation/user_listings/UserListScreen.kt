@@ -1,15 +1,14 @@
 package com.upar24.cpsoft.presentation.user_listings
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -51,19 +50,40 @@ fun UserListingsScreen(
             maxLines = 1,
             singleLine = true
         )
-        Text(
-            text = "sorted by name",
-            modifier = Modifier.clickable {
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .padding(4.dp),
+            Arrangement.SpaceAround,
+            verticalAlignment = Alignment.CenterVertically
+        ){
+            Button(onClick = {
                 navigator.navigate(UsersSortedByNameDestination)
-            })
-        CitySelection(navigator = navigator, filterList = true)
+            }) {
+                Text(
+                    text = "Sorted By Name",
+                    style= MaterialTheme.typography.button
+                )
+            }
+            CitySelection(navigator = navigator, filterList = true)
+            Button(onClick = {
+                navigator.navigate(UsersSortedByNameDestination)
+            }) {
+                Text(
+                    text = "Add User",
+                    style= MaterialTheme.typography.button
+                )
+            }
+
+        }
+
         SwipeRefresh(
             state = swipeRefreshState,
             onRefresh = {
                 viewModel.onEvent(UserEvent.Refresh)
             }) {
             LazyColumn(
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize().padding(16.dp)
             ){
                 items(state.users.size){i ->
                     val user = state.users[i]
@@ -76,7 +96,6 @@ fun UserListingsScreen(
                                     UserInfoScreenDestination()
                                 )
                             }
-                            .padding(16.dp)
                     )
                 }
             }

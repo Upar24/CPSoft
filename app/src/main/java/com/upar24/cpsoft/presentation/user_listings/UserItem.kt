@@ -11,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -75,17 +76,17 @@ fun CitySelection(navigator: DestinationsNavigator, filterList:Boolean){
     var cityName: String by remember { mutableStateOf(cityList[0]) }
     var expanded by remember { mutableStateOf(false)}
 
-    Box(Modifier.fillMaxWidth(),contentAlignment = Alignment.Center) {
+    Box(contentAlignment = Alignment.Center) {
         Row( modifier = Modifier
-            .padding(24.dp)
+            .padding(4.dp)
             .clickable {
                 expanded = !expanded
             }
-            .padding(8.dp),
+            .padding(4.dp),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(text = cityName,fontSize = 18.sp,modifier = Modifier.padding(end = 8.dp))
+            Text(text = cityName,style= MaterialTheme.typography.button)
             Icon(imageVector = Icons.Filled.ArrowDropDown, contentDescription = "")
 
             DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false}) {
@@ -100,7 +101,7 @@ fun CitySelection(navigator: DestinationsNavigator, filterList:Boolean){
                             }
                         }
                     ) {
-                        Text(text = city)
+                        Text(text = city,style=MaterialTheme.typography.button)
                     }
                 }
             }
